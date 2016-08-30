@@ -4,19 +4,26 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 public class GridTraverserTests {
 
     private GridTraverser subject;
+    private ResistanceGrid mockGrid;
+
+    @Before
+    public void setup() {
+        mockGrid = Mockito.mock(ResistanceGrid.class);
+        subject = new GridTraverser(mockGrid);
+    }
 
     @Test
     public void getNextPositionReturnsThePointWithLowestValueFromTheFirstColumnOfTheCurrentGridWhenTheDefaultGridPositionIsGiven() {
-        ResistanceGrid mockGrid = Mockito.mock(ResistanceGrid.class);
         int[] columnValues = {4, 1, 2, 3};
         when(mockGrid.getValuesForColumn(0)).thenReturn(columnValues);
-        subject = new GridTraverser(mockGrid);
+
         GridPoint point = new GridPoint();
 
         GridPoint actualNextPosition = subject.getNextPosition(point);
@@ -27,10 +34,9 @@ public class GridTraverserTests {
 
     @Test
     public void getNextPositionReturnsThePointWithTheLowestValueFromTheAdjacentPointsInTheNextColumn() {
-        ResistanceGrid mockGrid = Mockito.mock(ResistanceGrid.class);
         int[] columnValues = {0, 2, 4, 1, 0};
         when(mockGrid.getValuesForColumn(1)).thenReturn(columnValues);
-        subject = new GridTraverser(mockGrid);
+
         GridPoint point = new GridPoint(0, 2);
 
         GridPoint actualNextPosition = subject.getNextPosition(point);
