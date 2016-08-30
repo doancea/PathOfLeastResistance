@@ -1,10 +1,6 @@
 package com.doancea.pathofleastresistance.Grid;
 
 
-import android.support.v4.util.Pair;
-
-import java.lang.reflect.Array;
-
 public class ResistanceGrid {
 
     private final int[][] grid;
