@@ -16,4 +16,12 @@ public class ResistanceGrid {
     public int get(int column, int row) {
         return this.grid[column][row];
     }
+
+    public int[] getValuesForColumn(int column) {
+        int[] columnValues = new int[grid[column].length];
+        for(int i = 0; i < grid[column].length; i++) {
+            columnValues[i] = this.get(column, i);
+        }
+        return columnValues;
+    }
 }
