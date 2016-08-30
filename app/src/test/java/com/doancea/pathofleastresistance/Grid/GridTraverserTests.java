@@ -52,4 +52,18 @@ public class GridTraverserTests {
         GridPoint expectedNextPosition = new GridPoint(1, 4);
         assertThat(actualNextPosition, is(expectedNextPosition));
     }
+
+    @Test
+    public void getNextPositionReturnsWrapsToTheTopRowWhenTheGivenPointIsInTheBottomRow() {
+        ResistanceGrid mockGrid = Mockito.mock(ResistanceGrid.class);
+        int[] columnValues = {0, 2, 4, 1, 5};
+        when(mockGrid.getValuesForColumn(1)).thenReturn(columnValues);
+        subject = new GridTraverser(mockGrid);
+        GridPoint point = new GridPoint(0, 4);
+
+        GridPoint actualNextPosition = subject.getNextPosition(point);
+
+        GridPoint expectedNextPosition = new GridPoint(1, 0);
+        assertThat(actualNextPosition, is(expectedNextPosition));
+    }
 }
