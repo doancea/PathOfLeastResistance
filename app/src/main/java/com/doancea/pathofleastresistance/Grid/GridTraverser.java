@@ -29,11 +29,11 @@ public class GridTraverser {
         int absoluteMinimumValuePosition = getAbsolutePosition(relativeMinimumValuePosition, currentRow);
 
         if(absoluteMinimumValuePosition == -1) {
-            absoluteMinimumValuePosition = possibleValues.length - 1;
+            return possibleValues.length - 1;
         }
 
         if(absoluteMinimumValuePosition == possibleValues.length) {
-            absoluteMinimumValuePosition = 0;
+            return 0;
         }
 
         return absoluteMinimumValuePosition;
