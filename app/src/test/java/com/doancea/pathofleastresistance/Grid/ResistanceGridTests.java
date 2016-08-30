@@ -21,7 +21,7 @@ public class ResistanceGridTests {
 
     @Test
     public void getValuesForColumnReturnsAnArrayOfAllValuesForTheGivenColumn() {
-        int[][]gridValues = { { 0, 1, 2, 3 } };
+        int[][] gridValues = { { 0 }, { 1 }, { 2 }, { 3 } };
 
         ResistanceGrid subject = new ResistanceGrid(gridValues);
 
@@ -33,7 +33,7 @@ public class ResistanceGridTests {
 
     @Test
     public void getNumberOfColumnsReturnsTheNumberOfColumnsInTheGrid() {
-        int[][] gridValues = { { 1 }, { 2 }, { 3 }, { 4 }, { 5 } };
+        int[][] gridValues = { { 1, 2, 3, 4, 5 } };
 
         ResistanceGrid subject = new ResistanceGrid(gridValues);
 

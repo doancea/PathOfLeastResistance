@@ -9,19 +9,19 @@ public class ResistanceGrid {
         this.grid = gridValues;
     }
 
-    public int get(int column, int row) {
-        return this.grid[column][row];
+    public int get(int row, int column) {
+        return this.grid[row][column];
     }
 
     public int[] getValuesForColumn(int column) {
-        int[] columnValues = new int[grid[column].length];
-        for(int i = 0; i < grid[column].length; i++) {
-            columnValues[i] = this.get(column, i);
+        int[] columnValues = new int[grid.length];
+        for(int i = 0; i < grid.length; i++) {
+            columnValues[i] = this.get(i, column);
         }
         return columnValues;
     }
 
     public int getNumberOfColumns() {
-        return this.grid.length;
+        return this.grid[0].length;
     }
 }

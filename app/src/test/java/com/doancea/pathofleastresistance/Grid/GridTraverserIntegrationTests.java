@@ -13,7 +13,7 @@ public class GridTraverserIntegrationTests {
 
     @Test
     public void getNextPositionReturnsAValueFromTheFirstColumnOfTheCurrentGridWhenTheDefaultGridPointIsGiven() {
-        int[][] gridValues = { { 0, 1, 2, 3, 4, 5 } };
+        int[][] gridValues = { { 0 }, { 1 }, { 2 }, { 3 }, { 4 }, { 5 } };
         grid = new ResistanceGrid(gridValues);
         traverser = new GridTraverser();
         GridPoint point = new GridPoint();
@@ -26,7 +26,7 @@ public class GridTraverserIntegrationTests {
 
     @Test
     public void getNextPositionReturnsTheLowestValueFromTheFirstColumnOfTheCurrentGridWhenTheDefaultGridPositionIsGiven() {
-        int[][] gridValues = { {4, 3, 1, 2} };
+        int[][] gridValues = { { 4 }, { 3 }, { 1 }, { 2 } };
         grid = new ResistanceGrid(gridValues);
         traverser = new GridTraverser();
         GridPoint point = new GridPoint();

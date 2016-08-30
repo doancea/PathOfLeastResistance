@@ -7,7 +7,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,11 +19,16 @@ public class TraversalDelegateIntegrationTests {
     @Test
     public void findThePathOfImmediateLeastResistance() {
         int[][] gridValues = {
-                {9, 0, 8, 1, 7, 2, 6, 3, 5, 4},
-                {8, 9, 7, 6, 2, 3, 1, 4, 0, 5},
-                {1, 7, 8, 9, 5, 6, 2, 3, 4, 0},
-                {7, 8, 9, 3, 4, 5, 6, 0, 1, 2},
-                {9, 8, 0, 6, 5, 4, 3, 2, 1, 7}
+                {9, 8, 1, 7, 9},
+                {0, 9, 7, 8, 8},
+                {8, 7, 8, 9, 0},
+                {1, 6, 9, 3, 6},
+                {7, 2, 5, 4, 5},
+                {2, 3, 6, 5, 4},
+                {6, 1, 2, 6, 3},
+                {3, 4, 3, 0, 2},
+                {5, 0, 4, 1, 1},
+                {4, 5, 0, 2, 7}
         };
 
         grid = new ResistanceGrid(gridValues);
