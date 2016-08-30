@@ -2,9 +2,9 @@ package com.doancea.pathofleastresistance.Grid;
 
 public class GridTraverser {
 
-    private ResistanceGrid grid;
+    private final ResistanceGrid grid;
 
-    public void setGrid(ResistanceGrid grid) {
+    public GridTraverser(ResistanceGrid grid) {
         this.grid = grid;
     }
 
