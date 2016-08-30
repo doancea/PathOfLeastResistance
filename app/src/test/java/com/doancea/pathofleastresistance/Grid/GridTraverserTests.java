@@ -2,6 +2,7 @@ package com.doancea.pathofleastresistance.Grid;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -47,7 +48,6 @@ public class GridTraverserTests {
 
     @Test
     public void getNextPositionReturnsWrapsToTheBottomRowWhenTheGivenPointIsInTheTopRow() {
-        ResistanceGrid mockGrid = Mockito.mock(ResistanceGrid.class);
         int[] columnValues = {5, 2, 4, 1, 0};
         when(mockGrid.getValuesForColumn(1)).thenReturn(columnValues);
         subject = new GridTraverser(mockGrid);
@@ -61,7 +61,6 @@ public class GridTraverserTests {
 
     @Test
     public void getNextPositionReturnsWrapsToTheTopRowWhenTheGivenPointIsInTheBottomRow() {
-        ResistanceGrid mockGrid = Mockito.mock(ResistanceGrid.class);
         int[] columnValues = {0, 2, 4, 1, 5};
         when(mockGrid.getValuesForColumn(1)).thenReturn(columnValues);
         subject = new GridTraverser(mockGrid);
@@ -71,5 +70,14 @@ public class GridTraverserTests {
 
         GridPoint expectedNextPosition = new GridPoint(1, 0);
         assertThat(actualNextPosition, is(expectedNextPosition));
+    }
+
+    @Test
+    //TODO: Pass through is a smell?
+    public void getGridColumnsCountReturnsTheTotalNumberOfColumnsInAGrid() {
+        int expectedColumnsCount = 4;
+        when(mockGrid.getNumberOfColumns()).thenReturn(expectedColumnsCount);
+
+        assertThat(subject.getGridColumnsCount(), is(expectedColumnsCount));
     }
 }

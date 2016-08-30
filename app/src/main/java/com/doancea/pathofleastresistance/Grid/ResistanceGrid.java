@@ -20,4 +20,8 @@ public class ResistanceGrid {
         }
         return columnValues;
     }
+
+    public int getNumberOfColumns() {
+        return this.grid.length;
+    }
 }

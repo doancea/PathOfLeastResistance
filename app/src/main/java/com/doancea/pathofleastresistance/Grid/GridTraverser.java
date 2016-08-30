@@ -66,4 +66,8 @@ public class GridTraverser {
         }
         return minPosition;
     }
+
+    public int getGridColumnsCount() {
+        return this.grid.getNumberOfColumns();
+    }
 }

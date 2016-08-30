@@ -1,6 +1,7 @@
 package com.doancea.pathofleastresistance.Grid;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
@@ -28,5 +29,14 @@ public class ResistanceGridTests {
 
         int[] expectedColumnValues = {0, 1, 2, 3};
         assertArrayEquals(expectedColumnValues, actualColumnValues);
+    }
+
+    @Test
+    public void getNumberOfColumnsReturnsTheNumberOfColumnsInTheGrid() {
+        int[][] gridValues = { { 1 }, { 2 }, { 3 }, { 4 }, { 5 } };
+
+        ResistanceGrid subject = new ResistanceGrid(gridValues);
+
+        assertThat(subject.getNumberOfColumns(), is(5));
     }
 }
