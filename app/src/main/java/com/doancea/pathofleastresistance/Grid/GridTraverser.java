@@ -17,23 +17,25 @@ public class GridTraverser {
         if(nextColumn == 0) {
             minPosition = searchForMinimumPosition(possibleValues);
         } else {
-            minPosition = getLeastResistance(point);
+            minPosition = getMinimumAdjacentPosition(point.second, possibleValues);
         }
 
         return new GridPoint(nextColumn, minPosition);
     }
 
-    private int getLeastResistance(GridPoint point) {
-        int minPosition;
-        int[] adjacentValues = getAdjacentRows(point);
-        minPosition = searchForMinimumPosition(adjacentValues) + (point.second - 1);
-        return minPosition;
+    private int getMinimumAdjacentPosition(int currentRow, int[] possibleValues) {
+        int[] adjacentValues = getAdjacentRows(possibleValues, currentRow);
+        int relativeMinimum = searchForMinimumPosition(adjacentValues);
+        return getAdjustedPosition(relativeMinimum, currentRow);
     }
 
-    private int[] getAdjacentRows(GridPoint point) {
-        int nextRow = 1;
-        int[] adjacentColumns = grid.getValuesForColumn(nextRow);
-        return Arrays.copyOfRange(adjacentColumns, point.second - 1, point.second + 2);
+    private int getAdjustedPosition(int relativePosition, int currentRow) {
+        return relativePosition + (currentRow - 1);
+    }
+
+    private int[] getAdjacentRows(int[] adjacentColumn, int currentRow) {
+
+        return Arrays.copyOfRange(adjacentColumn, currentRow - 1, currentRow + 2);
     }
 
     private int searchForMinimumPosition(int[] possibleValues) {
