@@ -4,13 +4,10 @@ import java.util.Arrays;
 
 public class GridTraverser {
 
-    private final ResistanceGrid grid;
-
-    public GridTraverser(ResistanceGrid grid) {
-        this.grid = grid;
+    public GridTraverser() {
     }
 
-    public GridPoint getNextPosition(GridPoint point) {
+    public GridPoint getNextPosition(GridPoint point, ResistanceGrid grid) {
         int nextColumn = point.column + 1, minPosition;
         int[] possibleValues = grid.getValuesForColumn(nextColumn);
 
@@ -65,9 +62,5 @@ public class GridTraverser {
             }
         }
         return minPosition;
-    }
-
-    public int getGridColumnsCount() {
-        return this.grid.getNumberOfColumns();
     }
 }
