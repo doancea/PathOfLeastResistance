@@ -11,13 +11,13 @@ public class GridTraverser {
     }
 
     public GridPoint getNextPosition(GridPoint point) {
-        int nextColumn = point.first + 1, minPosition;
+        int nextColumn = point.column + 1, minPosition;
         int[] possibleValues = grid.getValuesForColumn(nextColumn);
 
         if(nextColumn == 0) {
             minPosition = searchForMinimumPosition(possibleValues);
         } else {
-            minPosition = getMinimumAdjacentPosition(point.second, possibleValues);
+            minPosition = getMinimumAdjacentPosition(point.row, possibleValues);
         }
 
         return new GridPoint(nextColumn, minPosition);
