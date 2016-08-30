@@ -11,24 +11,32 @@ public class GridTraverser {
     }
 
     public GridPoint getNextPosition(GridPoint point) {
-        if(point.first == -1 || point.second == -1) {
-            int[] possibleValues = grid.getValuesForColumn(0);
+        int nextColumn = point.first + 1, minPosition;
+        int[] possibleValues = grid.getValuesForColumn(nextColumn);
 
-            int minPosition = 0, minValue = possibleValues[0];
-            for(int i = 1; i < possibleValues.length; i++) {
-                if(possibleValues[i] < minValue) {
-                    minPosition = i;
-                    minValue = possibleValues[i];
-                }
-            }
-
-            return new GridPoint(0, minPosition);
+        if(nextColumn == 0) {
+            minPosition = searchForMinimumPosition(possibleValues);
+        } else {
+            minPosition = getLeastResistance(point);
         }
 
-        int[] adjacentColumns = grid.getValuesForColumn(point.first + 1);
-        int[] possibleValues = Arrays.copyOfRange(adjacentColumns, point.second - 1, point.second + 2);
+        return new GridPoint(nextColumn, minPosition);
+    }
 
+    private int getLeastResistance(GridPoint point) {
+        int minPosition;
+        int[] adjacentValues = getAdjacentRows(point);
+        minPosition = searchForMinimumPosition(adjacentValues) + (point.second - 1);
+        return minPosition;
+    }
 
+    private int[] getAdjacentRows(GridPoint point) {
+        int nextRow = 1;
+        int[] adjacentColumns = grid.getValuesForColumn(nextRow);
+        return Arrays.copyOfRange(adjacentColumns, point.second - 1, point.second + 2);
+    }
+
+    private int searchForMinimumPosition(int[] possibleValues) {
         int minPosition = 0, minValue = possibleValues[0];
         for(int i = 1; i < possibleValues.length; i++) {
             if(possibleValues[i] < minValue) {
@@ -36,7 +44,6 @@ public class GridTraverser {
                 minValue = possibleValues[i];
             }
         }
-
-        return new GridPoint(point.first + 1, minPosition + point.second - 1);
+        return minPosition;
     }
 }

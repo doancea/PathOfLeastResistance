@@ -28,14 +28,14 @@ public class GridTraverserTests {
     @Test
     public void getNextPositionReturnsThePointWithTheLowestValueFromTheAdjacentPointsInTheNextColumn() {
         ResistanceGrid mockGrid = Mockito.mock(ResistanceGrid.class);
-        int[] columnValues = {0, 1, 4, 2, 0};
+        int[] columnValues = {0, 2, 4, 1, 0};
         when(mockGrid.getValuesForColumn(1)).thenReturn(columnValues);
         subject = new GridTraverser(mockGrid);
         GridPoint point = new GridPoint(0, 2);
 
         GridPoint actualNextPosition = subject.getNextPosition(point);
 
-        GridPoint expectedNextPosition = new GridPoint(1, 1);
+        GridPoint expectedNextPosition = new GridPoint(1, 3);
         assertThat(actualNextPosition, is(expectedNextPosition));
     }
 }
