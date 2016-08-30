@@ -26,15 +26,26 @@ public class GridTraverser {
     private int getMinimumAdjacentPosition(int currentRow, int[] possibleValues) {
         int[] adjacentValues = getAdjacentRows(possibleValues, currentRow);
         int relativeMinimum = searchForMinimumPosition(adjacentValues);
-        return getAdjustedPosition(relativeMinimum, currentRow);
+
+        int adjustedMinimum = getAdjustedPosition(relativeMinimum, currentRow);
+
+        if(adjustedMinimum == -1) {
+            adjustedMinimum = possibleValues.length - 1;
+        }
+
+        return adjustedMinimum;
     }
 
     private int getAdjustedPosition(int relativePosition, int currentRow) {
+
         return relativePosition + (currentRow - 1);
     }
 
     private int[] getAdjacentRows(int[] adjacentColumn, int currentRow) {
-
+        if(currentRow == 0) {
+            int[] adjacentRows = { adjacentColumn[adjacentColumn.length - 1], adjacentColumn[0], adjacentColumn[1] };
+            return adjacentRows;
+        }
         return Arrays.copyOfRange(adjacentColumn, currentRow - 1, currentRow + 2);
     }
 
