@@ -48,4 +48,37 @@ public class TraversalDelegateIntegrationTests {
 
         assertThat(result.getPath(), is(expectedPath));
     }
+
+    @Test
+    public void findThePathOfLeastResistance() {
+        int[][] gridValues = {
+                {9, 8, 1, 7, 9},
+                {0, 9, 7, 8, 8},
+                {8, 7, 8, 9, 0},
+                {1, 6, 9, 3, 6},
+                {7, 2, 5, 4, 5},
+                {2, 3, 6, 5, 4},
+                {6, 1, 2, 6, 3},
+                {3, 4, 3, 0, 2},
+                {5, 0, 4, 1, 1},
+                {4, 5, 0, 2, 7}
+        };
+
+        grid = new ResistanceGrid(gridValues);
+        traverser = new GridTraverser();
+
+        delegate = new TraversalDelegate(traverser, grid);
+
+        TraversalResult result = delegate.getPathOfLeastResistance();
+
+        List<GridPoint> expectedPath = Arrays.asList(new GridPoint[]{
+                new GridPoint(0, 7),
+                new GridPoint(1, 8),
+                new GridPoint(2, 9),
+                new GridPoint(3, 8),
+                new GridPoint(4, 8)
+        });
+
+        assertThat(result.getPath(), is(expectedPath));
+    }
 }
