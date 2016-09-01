@@ -1,5 +1,8 @@
-package com.doancea.pathofleastresistance.Grid;
+package com.doancea.pathofleastresistance.Traversal;
 
+
+import com.doancea.pathofleastresistance.Grid.GridPoint;
+import com.doancea.pathofleastresistance.Grid.ResistanceGrid;
 
 import org.junit.Test;
 
