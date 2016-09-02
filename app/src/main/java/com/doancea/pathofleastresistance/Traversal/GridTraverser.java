@@ -20,7 +20,7 @@ public class GridTraverser {
             minPosition = getMinimumAdjacentPosition(point.row, possibleValues);
         }
 
-        return new GridPoint(nextColumn, minPosition);
+        return new GridPoint(minPosition, nextColumn);
     }
 
     private int getMinimumAdjacentPosition(int currentRow, int[] possibleValues) {

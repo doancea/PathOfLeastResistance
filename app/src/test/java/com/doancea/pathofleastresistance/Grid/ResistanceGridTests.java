@@ -20,6 +20,17 @@ public class ResistanceGridTests {
     }
 
     @Test
+    public void getPointReturnsThePointAtTheGivenRowAndColumn() {
+        int expectedResistance = 9;
+        int[][] gridValues = { {0, 1, 2, expectedResistance, 4, 5} };
+        ResistanceGrid subject = new ResistanceGrid(gridValues);
+
+        GridPoint actualPoint = subject.getPoint(0, 2);
+        GridPoint expectedPoint = new GridPoint(0, 2, expectedResistance);
+        assertThat(actualPoint, is(expectedPoint));
+    }
+
+    @Test
     public void getValuesForColumnReturnsAnArrayOfAllValuesForTheGivenColumn() {
         int[][] gridValues = { { 0 }, { 1 }, { 2 }, { 3 } };
 

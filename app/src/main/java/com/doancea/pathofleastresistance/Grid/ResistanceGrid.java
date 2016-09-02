@@ -15,7 +15,7 @@ public class ResistanceGrid {
 
     public int[] getValuesForColumn(int column) {
         int[] columnValues = new int[grid.length];
-        for(int i = 0; i < grid.length; i++) {
+        for (int i = 0; i < grid.length; i++) {
             columnValues[i] = this.get(i, column);
         }
         return columnValues;
@@ -23,5 +23,10 @@ public class ResistanceGrid {
 
     public int getNumberOfColumns() {
         return this.grid[0].length;
+    }
+
+
+    public GridPoint getPoint(int row, int column) {
+        return new GridPoint(row, column, this.get(row, column));
     }
 }

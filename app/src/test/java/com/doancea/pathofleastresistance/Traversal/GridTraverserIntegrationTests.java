@@ -36,7 +36,7 @@ public class GridTraverserIntegrationTests {
 
         GridPoint actualNextPosition = traverser.getNextPosition(point, grid);
 
-        GridPoint expectedNextPosition = new GridPoint(0, 2);
+        GridPoint expectedNextPosition = new GridPoint(2, 0);
         assertThat(actualNextPosition, is(expectedNextPosition));
     }
 }

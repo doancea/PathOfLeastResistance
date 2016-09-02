@@ -32,7 +32,7 @@ public class GridTraverserTests {
 
         GridPoint actualNextPosition = subject.getNextPosition(point, mockGrid);
 
-        GridPoint expectedNextPosition = new GridPoint(0, 1);
+        GridPoint expectedNextPosition = new GridPoint(1, 0);
         assertThat(actualNextPosition, is(expectedNextPosition));
     }
 
@@ -41,11 +41,11 @@ public class GridTraverserTests {
         int[] columnValues = {0, 2, 4, 1, 0};
         when(mockGrid.getValuesForColumn(1)).thenReturn(columnValues);
 
-        GridPoint point = new GridPoint(0, 2);
+        GridPoint point = new GridPoint(2, 0);
 
         GridPoint actualNextPosition = subject.getNextPosition(point, mockGrid);
 
-        GridPoint expectedNextPosition = new GridPoint(1, 3);
+        GridPoint expectedNextPosition = new GridPoint(3, 1);
         assertThat(actualNextPosition, is(expectedNextPosition));
     }
 
@@ -58,7 +58,7 @@ public class GridTraverserTests {
 
         GridPoint actualNextPosition = subject.getNextPosition(point, mockGrid);
 
-        GridPoint expectedNextPosition = new GridPoint(1, 4);
+        GridPoint expectedNextPosition = new GridPoint(4, 1);
         assertThat(actualNextPosition, is(expectedNextPosition));
     }
 
@@ -67,11 +67,11 @@ public class GridTraverserTests {
         int[] columnValues = {0, 2, 4, 1, 5};
         when(mockGrid.getValuesForColumn(1)).thenReturn(columnValues);
         subject = new GridTraverser();
-        GridPoint point = new GridPoint(0, 4);
+        GridPoint point = new GridPoint(4, 0);
 
         GridPoint actualNextPosition = subject.getNextPosition(point, mockGrid);
 
-        GridPoint expectedNextPosition = new GridPoint(1, 0);
+        GridPoint expectedNextPosition = new GridPoint(0, 1);
         assertThat(actualNextPosition, is(expectedNextPosition));
     }
 }

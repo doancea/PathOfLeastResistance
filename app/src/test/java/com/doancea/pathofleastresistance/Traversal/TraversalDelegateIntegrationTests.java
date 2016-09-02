@@ -43,11 +43,11 @@ public class TraversalDelegateIntegrationTests {
         TraversalResult result = delegate.getPathOfLeastResistance();
 
         List<GridPoint> expectedPath = Arrays.asList(new GridPoint[]{
-                new GridPoint(0, 1),
-                new GridPoint(1, 2),
+                new GridPoint(1, 0),
                 new GridPoint(2, 1),
-                new GridPoint(3, 0),
-                new GridPoint(4, 9)
+                new GridPoint(1, 2),
+                new GridPoint(0, 3),
+                new GridPoint(9, 4)
         });
 
         assertThat(result.getPath(), is(expectedPath));
